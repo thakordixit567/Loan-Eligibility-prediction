@@ -18,4 +18,15 @@ df = pd.read_csv('loan_data.csv')
 
 #print(df.info())
 
-print(df.describe())
+#print(df.describe())
+
+#temp = df['Loan_Status'].value_counts()
+#plt.pie(temp.values,labels=temp.index,autopct='%1.1f%%')
+#plt.show()
+
+plt.subplots(figsize=(15, 5))
+for i, col in enumerate(['Gender', 'Married']):
+	plt.subplot(1, 2, i+1)
+	sb.countplot(data=df, x=col, hue='Loan_Status')
+plt.tight_layout()
+plt.show()
